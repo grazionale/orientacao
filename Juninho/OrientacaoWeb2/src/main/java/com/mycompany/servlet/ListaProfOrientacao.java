@@ -32,7 +32,8 @@ public class ListaProfOrientacao extends HttpServlet {
                 }
                 java.sql.Connection conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/orientacaoweb?autoReconnect=true&useSSL=false", "root", "utfpr");
 
-                PreparedStatement ps = conexao.prepareStatement("SELECT * FROM professor, orientacao WHERE professor.idProfessor = orientacao.idProfessorOrientacao");
+                //PreparedStatement ps = conexao.prepareStatement("SELECT * FROM professor, orientacao WHERE professor.idProfessor = orientacao.idProfessorOrientacao AND professor.nomeProfessor LIKE '%"+request.getParameter("inputNome")+"%'");
+                PreparedStatement ps = conexao.prepareStatement("SELECT professor.*, orientacao.* FROM orientacao INNER JOIN professor ON orientacao.idProfessorOrientacao = professor.idProfessor WHERE professor.nomeProfessor LIKE'%"+request.getParameter("inputNome")+"%'");
                 ResultSet rs = ps.executeQuery();
 
                 Orientacao orientacao;
@@ -46,7 +47,7 @@ public class ListaProfOrientacao extends HttpServlet {
                     orientacao.getProfessor().setNomeProfessor(rs.getString("nomeProfessor"));
                     
                     arrays.add(orientacao);
-                    System.out.println(orientacao);
+                    
                 }
                 conexao.close();
             }catch(SQLException e){ 

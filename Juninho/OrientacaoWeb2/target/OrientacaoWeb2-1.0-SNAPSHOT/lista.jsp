@@ -8,40 +8,35 @@
         <title>JSP Page</title>
     </head>
     <style>
-        ul {
-            display: block;
+        .invisivel{
+            display: none;
+        }
+        .doLadinho{
+            display: inline;
         }
     </style>
     <body>
-        <div>
-            <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-            <fieldset> <legend>Listagem</legend>        
-                <form method="GET" action="lista" accept-charset="iso-8859-1">
-                    <button onclick="mostrar()">Clique para listar ou esconder</button>            
-                </form>
-                <ul id="lista">
-                    <c:forEach items="${orientacoes}" var="array">
-                        <li>${array.professor.getNomeProfessor()}
-                            <ul id="lista">
-                                <li>Descrição da orientação: ${array.getDescricaoOrientacao()}  </li> 
-                                <li>Orientado: ${array.getOrientadoOrientacao()}</li>
-                            </ul>                    
-                        </li>
-                    </c:forEach>
-                </ul>
-            </fieldset>
-        </div>        
+        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+        <fieldset> <legend>Busca de professor e listagem</legend>        
+            <form method="GET" action="lista" accept-charset="iso-8859-1" class="doLadinho">
+                <p>Pesquise o professor</p>
+                <input required name="inputNome"/>
+                <button type="submit">Pesquisar</button>
+            </form>
+            <form method="GET" action="lista" accept-charset="iso-8859-1" class="doLadinho">
+                <input class="invisivel" name="inputNome"/>
+                <button type="submit">Listar tudo</button>
+            </form>
+            <ul>
+                <c:forEach items="${orientacoes}" var="array">
+                    <li>${array.professor.getNomeProfessor()}
+                        <ul>
+                            <li>Descrição da orientação: ${array.getDescricaoOrientacao()}</li> 
+                            <li>Orientado: ${array.getOrientadoOrientacao()}</li>
+                        </ul>                    
+                    </li>
+                </c:forEach>
+            </ul>
+        </fieldset>
     </body>
-    
-    <script>
-        function mostrar(){
-            var x = document.getElementsById("lista");
-            if(x.style.display === "none"){
-                x.style.display = "block";
-            }
-            else{
-                x.style.display = "none";
-            }
-        }
-    </script>
 </html>
