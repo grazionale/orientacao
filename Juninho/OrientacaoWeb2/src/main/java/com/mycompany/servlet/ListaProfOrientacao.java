@@ -1,5 +1,5 @@
 
-package servlet;
+package com.mycompany.servlet;
 
 import java.io.IOException;
 import java.sql.DriverManager;
@@ -54,7 +54,7 @@ public class ListaProfOrientacao extends HttpServlet {
             }
         
         request.setAttribute("orientacoes", arrays);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("lista.jsp").forward(request, response);
     }
     
    /* public void doPost (HttpServletRequest request, HttpServletResponse response){
