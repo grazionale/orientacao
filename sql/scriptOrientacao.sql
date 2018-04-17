@@ -23,16 +23,10 @@ create table orientacao(
     CONSTRAINT fkProfessorOrientacao FOREIGN KEY (idProfessorOrientacao) REFERENCES professor (idProfessor)
 );
 
-describe orientacao;
-
 
 insert into usuario values(1, "admin", "admin@admin.com", "admin");  
-insert into professor values(1, "Nardi");
-insert into professor values(2, "Erika");
-insert into orientacao values(1, "TCC 1", "Juninho", 1);
-insert into orientacao values(2, "TCC 1 tbm", "João Capriel", 2);    
 
-select * from usuario;
+
 
     
     
