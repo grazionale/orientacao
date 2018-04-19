@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("nome", usuario.getNome());
             session.setAttribute("id", usuario.getId());
-            response.sendRedirect("");
+            response.sendRedirect("/");
         } catch (Exception e) {
             response.getWriter().write("<h4>Usuário ou senha inválido!</h4>");
             request.getRequestDispatcher("login.jsp").include(request, response);

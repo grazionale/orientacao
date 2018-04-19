@@ -15,7 +15,7 @@ public class PaginaInicialServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.getAttribute("nome");
         if(session.getAttribute("nome") == null) {
-            response.sendRedirect("/praticaum/login");
+            response.sendRedirect("/login");
             return;
         }
        

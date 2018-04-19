@@ -32,7 +32,7 @@ public class ProfileServlet extends HttpServlet {
             usuarioDao.criar(usuario);
             HttpSession session = request.getSession();
             session.setAttribute("nome", usuario.getNome());
-            response.sendRedirect("/praticaum");
+            response.sendRedirect("/");
         } catch (Exception e) {
             e.printStackTrace();
         }  
